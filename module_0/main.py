@@ -1,4 +1,6 @@
 import numpy as np
+
+
 def game_core_v1(number):
     '''Просто угадываем на random, никак не используя информацию о больше или меньше.
        Функция принимает загаданное число и возвращает число попыток'''
@@ -21,6 +23,7 @@ def score_game(game_core):
     print(f"Алгоритм {game_core} угадывает число в среднем за {score} попыток")
     return(score)
 
+
 def game_core_v2(number):
     '''Сначала устанавливаем любое random число, а потом уменьшаем или увеличиваем его в зависимости от того, больше оно или меньше нужного.
        Функция принимает загаданное число и возвращает число попыток'''
@@ -34,6 +37,25 @@ def game_core_v2(number):
             predict -= 1
     return(count) # выход из цикла, если угадали
 
+
+def game_core_v3(number):
+    start = 1
+    end = 101
+
+    count = 0
+    while True:
+        predict = start + (end-start)//2       
+        count += 1
+        if number < predict:
+            end = predict
+        elif number > predict:
+            start = predict
+        else:
+            break                    
+    return(count)
+
+
 # запускаем
 score_game(game_core_v1)
 score_game(game_core_v2)
+score_game(game_core_v3)
