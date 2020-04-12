@@ -18,8 +18,22 @@ def score_game(game_core):
     for number in random_array:
         count_ls.append(game_core(number))
     score = int(np.mean(count_ls))
-    print(f"Ваш алгоритм угадывает число в среднем за {score} попыток")
+    print(f"Алгоритм {game_core} угадывает число в среднем за {score} попыток")
     return(score)
+
+def game_core_v2(number):
+    '''Сначала устанавливаем любое random число, а потом уменьшаем или увеличиваем его в зависимости от того, больше оно или меньше нужного.
+       Функция принимает загаданное число и возвращает число попыток'''
+    count = 1
+    predict = np.random.randint(1,101)
+    while number != predict:
+        count+=1
+        if number > predict: 
+            predict += 1
+        elif number < predict: 
+            predict -= 1
+    return(count) # выход из цикла, если угадали
 
 # запускаем
 score_game(game_core_v1)
+score_game(game_core_v2)
