@@ -42,7 +42,14 @@ def game_core_v3(number, start, end):
     '''Берем входной интервал [start,end), и в цикле сравниваем его середину с загаданным 
        числом. Если число справа, то заменяем начало интервала его серединой.
        Если число слева, то заменяем конец интервала серединой. Повторяем пока 
-       середина не совпадет с загаданным числом'''
+       середина не совпадет с загаданным числом'''    
+    
+    #Валидируем входные аргументы
+    if not np.issubdtype(type(number), np.integer):
+        raise TypeError("number must be integer (actual {} - {})".format(number, type(number)))
+        
+    if number not in range(start, end):
+        raise ValueError("number must be in range ({},{})".format(start, end))
     
     def middle(start, end):
         return start + (end-start)//2
