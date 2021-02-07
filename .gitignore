@@ -128,3 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 module_6/output
+auto_ru_v2.csv
+auto_ru_v1.csv
